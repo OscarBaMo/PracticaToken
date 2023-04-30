@@ -1,0 +1,59 @@
+﻿public class Main {
+
+
+    public static void main(String[] args) {
+
+
+        Token token = new Token();
+    
+System.out.println(token.obtenerAlfabeto());
+        String tokenGenerado = token.generarToken();
+        System.out.println(tokenGenerado);
+
+
+        ArrayDeque<String> cola = new ArrayDeque<>();
+        for (int i =0;i<=10;i++) {
+            cola.add(token.generarToken());
+        }
+        System.out.println(cola);
+        Iterator tokenGuardados = cola.iterator();
+        System.out.println("Los valores de la lista de tokens es: ");
+        while (tokenGuardados.hasNext()) {
+            System.out.println(tokenGuardados.next());
+
+
+        }
+    }
+}
+
+
+package com.pperezm;
+
+
+import java.util.Random;
+
+
+public class Token {
+    public String obtenerAlfabeto(){
+        char x = 'A';
+        String alfabeto ="";
+        for (int i =0;i<=25;i++){
+            String charToString =String.valueOf(x++);
+           alfabeto=alfabeto.concat(charToString);
+        }
+        return alfabeto;
+    }
+    public String generarToken(){
+        String token ="";
+        Random random = new Random();
+
+
+        String alfabeto = obtenerAlfabeto();
+        for(int i=0;i<=3;i++){
+            char c = alfabeto.charAt(random.nextInt(alfabeto.length()));
+            String charToString =String.valueOf(c);
+            token = token.concat(String.valueOf(c));
+        }
+        return token;
+    }
+}
